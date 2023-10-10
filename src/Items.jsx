@@ -3,13 +3,11 @@ import customFetch from "../utilis";
 import SingleItem from "./SingleItem";
 
 const Items = ({ items }) => {
-const { data, isLoading, isError, error } = useQuery("tasks", () =>
-  customFetch.get("/").then((response) => {
-    console.log("Response data:", response.data);
-    return response.data;
-  })
-);
-
+  const result = useQuery({
+    queryKey: ["tasks"],
+    queryFn: () => customFetch.get["/"],
+  });
+  console.log(result);
   return (
     <div className="items">
       {items.map((item) => {
